@@ -1,0 +1,73 @@
+{
+  "root": "apps/dt-bridge",
+  "sourceRoot": "apps/dt-bridge/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/dt-bridge",
+        "index": "apps/dt-bridge/src/index.html",
+        "baseHref": "/",
+        "main": "apps/dt-bridge/src/main.tsx",
+        "polyfills": "apps/dt-bridge/src/polyfills.ts",
+        "tsConfig": "apps/dt-bridge/tsconfig.app.json",
+        "assets": [
+          "apps/dt-bridge/src/favicon.ico",
+          "apps/dt-bridge/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/dt-bridge/src/environments/environment.ts",
+              "with": "apps/dt-bridge/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "dt-bridge:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "dt-bridge:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/dt-bridge/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/dt-bridge"],
+      "options": {
+        "jestConfig": "apps/dt-bridge/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

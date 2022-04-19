@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "dt-bridge": "apps/dt-bridge",
+    "dt-bridge-e2e": "apps/dt-bridge-e2e"
+  }
+}
