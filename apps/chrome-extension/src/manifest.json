@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Dynatrace Bridge Extension (D1)",
+  "description": "",
+  "version": "1.0.0",
+  "author": "Jimmy Ruan",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "assets/dt-icon-16.png",
+      "32": "assets/dt-icon-32.png",
+      "48": "assets/dt-icon-48.png",
+      "64": "assets/dt-icon-64.png",
+      "128": "assets/dt-icon-128.png"
+    },
+    "default_title": "Dynatrace Bridge Extension",
+    "default_popup": "index.html"
+  },
+  "permissions": ["tabs", "activeTab", "scripting"],
+  "host_permissions": ["*://*/*"]
+}

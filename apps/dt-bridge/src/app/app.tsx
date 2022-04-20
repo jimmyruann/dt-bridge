@@ -1,15 +1,30 @@
-import styled from '@emotion/styled';
-import NxWelcome from './nx-welcome';
+import { MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { useRoutes } from 'react-router-dom';
+import { AppRoutes } from './app-routes';
 
-const StyledApp = styled.div`
-  // Your style here
-`;
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchInterval: false,
+      refetchOnMount: false,
+      refetchIntervalInBackground: false,
+      refetchOnReconnect: false,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 export function App() {
+  const routes = useRoutes(AppRoutes);
   return (
-    <StyledApp>
-      <NxWelcome title="dt-bridge" />
-    </StyledApp>
+    <QueryClientProvider client={queryClient}>
+      <MantineProvider withNormalizeCSS withGlobalStyles>
+        <NotificationsProvider>{routes}</NotificationsProvider>
+      </MantineProvider>
+    </QueryClientProvider>
   );
 }
 
