@@ -2,7 +2,6 @@
   "version": 2,
   "projects": {
     "chrome-extension": "apps/chrome-extension",
-    "chrome-extension-e2e": "apps/chrome-extension-e2e",
     "dt-bridge": "apps/dt-bridge",
     "dt-bridge-e2e": "apps/dt-bridge-e2e"
   }
