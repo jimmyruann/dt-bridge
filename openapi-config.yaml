@@ -1,7 +1,0 @@
-enumPropertyNaming: 'UPPERCASE'
-supportsES6: true
-snapshot: false
-withInterfaces: true
-withSeparateModelsAndApi: true
-apiPackage: 'api'
-modelPackage: 'models'

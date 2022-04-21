@@ -12,19 +12,19 @@ export interface AccountOverviewSummary {
 export interface AccountOwner {
   label: string;
   value: string;
-  email: string;
+  email?: string;
 }
 
 export interface DynatraceOneSquad {
   label: string;
-  email: null;
   value?: string;
+  email?: string;
 }
 
 export interface Geo {
   label: string;
   value: string;
-  email: null;
+  email?: string;
 }
 
 export interface SupportExpiration {

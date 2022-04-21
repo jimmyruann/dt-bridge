@@ -1,8 +1,13 @@
+import { Paper, Table } from '@mantine/core';
+import React from 'react';
 import { useQueries } from 'react-query';
 import {
   getAccountOverviewSummary,
   getLicenseSummary,
   getHealthSummary,
+  handleAccountOverviewSummary,
+  HandleReturnType,
+  handleLicenseSummary,
 } from '../../../../shared/ci360-api';
 
 interface Ci360DataTableProps {
@@ -49,9 +54,42 @@ export const Ci360DataTable = (accountProps: Ci360DataTableProps) => {
       </>
     );
 
+  const renderRows = (data: HandleReturnType, label: React.ReactNode) => {
+    return (
+      <>
+        <tr>
+          <td align="center" colSpan={2}>
+            <b>{label}</b>
+          </td>
+        </tr>
+        {data.map((each, i) => (
+          <tr key={i}>
+            <td>{each.key}</td>
+            <td>{each.value || 'N/A'}</td>
+          </tr>
+        ))}
+      </>
+    );
+  };
+
   console.log(queries);
 
-  return <div>{/* {type} {accountId} */}hi</div>;
+  return (
+    <Table highlightOnHover>
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {renderRows(
+          handleAccountOverviewSummary(queries[0].data),
+          'Account Overview'
+        )}
+      </tbody>
+    </Table>
+  );
 };
 
 export default Ci360DataTable;
